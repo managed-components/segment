@@ -1,0 +1,15 @@
+{
+  "name": "Segment",
+  "description": "Segment",
+  "namespace": "segment",
+  "icon": "assets/segment-logo.svg",
+  "categories": ["Analytics"],
+  "provides": ["events"],
+  "allowCustomFields": true,
+  "permissions": {
+    "access_client_kv": {
+      "description": "Stores ID as cookie",
+      "required": true
+    }
+  }
+}
