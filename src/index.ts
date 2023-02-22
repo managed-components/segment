@@ -38,9 +38,9 @@ export const eventHandler = async (
   }
 
   if (eventType === 'identify' || eventType === 'group') {
-    segmentPayload.traits = payload;
+    segmentPayload.traits = payload
   } else {
-    segmentPayload.properties = payload;
+    segmentPayload.properties = payload
   }
 
   if (eventType === 'page') {
