@@ -3,6 +3,7 @@ import UAParser from 'ua-parser-js'
 
 export const eventHandler = async (
   eventType: string,
+  manager: Manager,
   event: MCEvent,
   settings: ComponentSettings
 ) => {
@@ -70,7 +71,7 @@ export const eventHandler = async (
     'Content-Type': 'application/json',
   }
 
-  fetch(endpoint, {
+  manager.fetch(endpoint, {
     headers,
     method: 'POST',
     body: JSON.stringify(segmentPayload),
@@ -79,18 +80,18 @@ export const eventHandler = async (
 
 export default async function (manager: Manager, settings: ComponentSettings) {
   manager.addEventListener('pageview', event => {
-    eventHandler('page', event, settings)
+    eventHandler('page', manager, event, settings)
   })
   manager.addEventListener('track', event => {
-    eventHandler('track', event, settings)
+    eventHandler('track', manager, event, settings)
   })
   manager.addEventListener('identify', event => {
-    eventHandler('identify', event, settings)
+    eventHandler('identify', manager, event, settings)
   })
   manager.addEventListener('alias', event => {
-    eventHandler('alias', event, settings)
+    eventHandler('alias', manager, event, settings)
   })
   manager.addEventListener('group', event => {
-    eventHandler('group', event, settings)
+    eventHandler('group', manager, event, settings)
   })
 }
