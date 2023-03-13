@@ -1,6 +1,6 @@
 {
   "name": "@managed-components/segment",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Managed Component for Segment",
   "main": "dist/index.js",
   "scripts": {
