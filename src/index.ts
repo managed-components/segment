@@ -16,6 +16,7 @@ export const eventHandler = async (
   const uaParser = new UAParser(client.userAgent).getResult()
   /* eslint-disable  @typescript-eslint/no-explicit-any */
   const segmentPayload: any = {
+    ...(payload.event && { event }),
     callType: eventType,
     anonymousId: payload.anonymousId,
     userId: payload.userId,
