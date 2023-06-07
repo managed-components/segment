@@ -2,6 +2,7 @@ import { ComponentSettings, Manager, MCEvent } from '@managed-components/types'
 import UAParser from 'ua-parser-js'
 
 export const eventHandler = async (
+  eventHost?: string,
   eventType: string,
   manager: Manager,
   event: MCEvent,
@@ -9,7 +10,8 @@ export const eventHandler = async (
 ) => {
   const { payload, client } = event
 
-  const endpoint = 'https://api.segment.io/v1/' + eventType
+  const url = eventHost || 'https://api.segment.com/v1'
+  const endpoint =  url + eventType
   const { writeKey } = settings
 
   // Prepare new payload
