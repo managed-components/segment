@@ -9,8 +9,8 @@ export const eventHandler = async (
 ) => {
   const { payload, client } = event
 
-  const endpoint = 'https://api.segment.io/v1/' + eventType
-  const { writeKey } = settings
+  const { writeKey, hostname = 'api.segment.io' } = settings
+  const endpoint = `https://${hostname}/v1/${eventType}`
 
   // Prepare new payload
   const uaParser = new UAParser(client.userAgent).getResult()
@@ -66,9 +66,13 @@ export const eventHandler = async (
     })
   }
 
+  const encodeBase64 = (data: any) => {
+    return Buffer.from(data).toString('base64')
+  }
+
   // Send the request
   const headers = {
-    Authorization: 'Basic ' + btoa(writeKey),
+    Authorization: `Basic ${encodeBase64(writeKey)}`,
     'Content-Type': 'application/json',
   }
 
