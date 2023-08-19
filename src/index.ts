@@ -66,13 +66,9 @@ export const eventHandler = async (
     })
   }
 
-  const encodeBase64 = (data: any) => {
-    return Buffer.from(data).toString('base64')
-  }
-
   // Send the request
   const headers = {
-    Authorization: `Basic ${encodeBase64(writeKey)}`,
+    Authorization: 'Basic ' + btoa(writeKey),
     'Content-Type': 'application/json',
   }
 
