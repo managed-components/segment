@@ -10,6 +10,10 @@
     "access_client_kv": {
       "description": "Stores ID as cookie",
       "required": true
+    },
+    "server_network_requests": {
+      "description": "Segment uses serverside network requests to report data",
+      "required": true
     }
   }
 }
