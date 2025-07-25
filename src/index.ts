@@ -9,7 +9,10 @@ export const eventHandler = async (
 ) => {
   const { payload, client } = event
 
-  const { writeKey, hostname = 'api.segment.io' } = settings
+  let { writeKey, hostname = 'api.segment.io' } = settings
+  if (payload.hostname) {
+    hostname = payload.hostname
+  }
   const endpoint = `https://${hostname}/v1/${eventType}`
 
   // Prepare new payload
