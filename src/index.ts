@@ -9,11 +9,13 @@ export const eventHandler = async (
 ) => {
   const { payload, client } = event
 
-  let { writeKey, hostname = 'api.segment.io' } = settings
+  let { hostname = 'api.segment.io' } = settings
   if (payload.hostname) {
     hostname = payload.hostname
   }
   const endpoint = `https://${hostname}/v1/${eventType}`
+
+  const { writeKey } = settings
 
   // Prepare new payload
   const uaParser = new UAParser(client.userAgent).getResult()
